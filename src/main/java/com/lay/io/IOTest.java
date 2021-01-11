@@ -30,7 +30,7 @@ public class IOTest {
     public void Test(){
         ByteArrayInputStream inputStream = new ByteArrayInputStream("岳磊".getBytes());
         System.out.println(inputStream);
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        //ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     }
 
     @Test
