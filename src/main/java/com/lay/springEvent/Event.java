@@ -1,4 +1,4 @@
-package com.lay.event;
+package com.lay.springEvent;
 
 import org.springframework.context.ApplicationEvent;
 

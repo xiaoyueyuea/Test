@@ -1,10 +1,10 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://mysql.middleware-mysql.svc.cluster.local:3306/cms_db?useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
-    username: root
-    password: root
+    url:
+    username:
+    password:
   redis:
-    host: 192.168.0.228
-    port: 6379
-    password: 123456
+    host:
+    port:
+    password:

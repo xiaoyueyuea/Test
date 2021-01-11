@@ -1,6 +1,6 @@
 package com.lay.run;
 
-import com.lay.event.EventPublisher;
+import com.lay.springEvent.EventPublisher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

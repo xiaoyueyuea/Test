@@ -1,4 +1,4 @@
-package com.lay.event;
+package com.lay.springEvent;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;

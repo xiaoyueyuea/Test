@@ -1,4 +1,4 @@
-package com.lay.event;
+package com.lay.springEvent;
 
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionPhase;
