@@ -21,8 +21,8 @@ public class ThreadsTest {
             @Override
             public void run() {
                 for(int i = 0;i<4;i++){
-//                    System.out.println("A");
-//                    System.out.println("B");
+                    System.out.println("A");
+                    System.out.println("B");
                     getTime("thread1");
                 }
             }
