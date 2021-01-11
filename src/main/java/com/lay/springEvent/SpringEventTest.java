@@ -1,4 +1,4 @@
-package com.lay.run;
+package com.lay.springEvent;
 
 import com.lay.springEvent.EventPublisher;
 import org.junit.Test;
