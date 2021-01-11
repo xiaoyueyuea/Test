@@ -16,7 +16,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 
 @SpringBootApplication
-@MapperScan("com.yl.mybatis.mapper")//扫描mapper
+@MapperScan("com.yl.mybatis.mapper")//扫描所有mapper
 public class SpringBootStart {
 
     public static void main(String[] args) {
