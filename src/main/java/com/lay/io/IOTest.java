@@ -98,10 +98,63 @@ public class IOTest {
         writer.close();
     }
 
+    /**
+     *BufferedInputStream  BufferedOutputStream  缓冲字节输入/输出流，是一个高级流(处理流)，与其他低级流配合使用。
+     */
+    public static void bisAndBos() throws IOException {
+        //向外部文件写入数据
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_PATH,true);
+        BufferedOutputStream out = new BufferedOutputStream(fileOutputStream);
+        String data = "{abcd}";
+        out.write(data.getBytes(),0,data.getBytes().length);
+        out.flush();
+        out.close();
+
+        //读数据
+        FileInputStream fileInputStream = new FileInputStream(FILE_PATH);
+        BufferedInputStream in = new BufferedInputStream(fileInputStream);
+        StringBuilder sb = new StringBuilder();
+        byte[] buffer = new byte[10240];//自定义缓冲区
+        int flag = 0;
+        while ((flag = in.read(buffer)) != -1){
+            sb.append(new String(buffer, 0, flag));
+        }
+        in.close();
+        System.out.println(sb.toString());
+    }
+
+    /**
+     * BufferedReader BufferedWriter  缓冲字符输入/输出流，是一个高级流(处理流)，与其他低级流配合使用。
+     * @throws IOException
+     */
+    public static void brAndBw() throws IOException{
+        //写入
+        FileWriter fileWriter = new FileWriter(FILE_PATH,true);
+        BufferedWriter writer = new BufferedWriter(fileWriter);
+        String data = "缓冲字符流测试数据";
+        writer.write(data,0,data.length());
+        writer.flush();
+        writer.close();
+
+        //读
+        FileReader fileReader = new FileReader(FILE_PATH);
+        BufferedReader reader = new BufferedReader(fileReader);
+        StringBuilder sb = new StringBuilder();
+        int flag = 0;
+        int size = 10;
+        while ((flag = reader.read()) != -1){
+            sb.append((char)flag);
+        }
+        reader.close();
+        System.out.println(sb.toString());
+    }
+
     public static void main(String[] args) throws IOException {
         //writeContentToFileByBytesStream();
         //getContentFromFileByBytesStream();
         //getContentFromFileByCharacterStream();
         //writeContentToFileByCharacterStream();
+        //bisAndBos();
+        brAndBw();
     }
 }
