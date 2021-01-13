@@ -14,6 +14,8 @@ package com.lay.io;
  */
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  * 字节流操作类(bytes streams)和字符流操作类(character streams)组成了Java IO体系,Java中所有流的相关操作的类，都继承自以下四个抽象类
@@ -149,12 +151,125 @@ public class IOTest {
         System.out.println(sb.toString());
     }
 
+    /**
+     * 提供了针对于字符数组 byte [] 的标准的IO操作方式
+     * ByteArrayOutputStream 实现了一个输出流，其中的数据被写入一个 byte 数组。缓冲区会随着数据的不断写入而自动增长。可使用 toByteArray() 和 toString() 获取数据。关闭 ByteArrayOutputStream 无效。此类中的方法在关闭此流后仍可被调用，而不会产生任何 IOException。
+     * ByteArrayInputStream 包含一个内部缓冲区，该缓冲区包含从流中读取的字节。内部计数器跟踪 read 方法要提供的下一个字节。关闭 ByteArrayInputStream 无效。此类中的方法在关闭此流后仍可被调用，而不会产生任何 IOException。
+     * @throws IOException
+     */
+    public static void baosAndBais() throws IOException{
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_PATH);
+        String data = "ByteArrayOutputStream和ByteArrayInputStream测试数据";
+        byte[] bytes = data.getBytes();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        out.write(bytes,0,bytes.length);
+        out.writeTo(fileOutputStream);
+//        System.out.println(out.toString());
+//        System.out.println(out.toByteArray());
+        fileOutputStream.flush();
+        out.close();
+
+        ByteArrayInputStream in = new ByteArrayInputStream(bytes);
+        int flag = 0;
+        StringBuilder sb = new StringBuilder();
+        while ((flag = in.read()) != -1){
+            sb.append((char)flag);
+        }
+        in.close();
+        System.out.println(sb.toString());
+
+    }
+
+    /**
+     * CharArrayReader 该类实现了一个可用作字符输入流的字符缓冲区，即该类可利用字符缓冲区当做字符输入流进行读取工作
+     * CharArrayWriter 该类实现了一个可用作字符输出流的字符缓冲区，当数据写入流时，缓冲区自动增长，请注意在此类上调用close（）无效，并且可以在流关闭后调用此类的方法而不生成IOException。
+     */
+    public static void carAndCaw()throws IOException{
+        FileWriter fileWriter = new FileWriter(FILE_PATH);
+        String data = "CharArrayReader和CharArrayWriter测试数据";
+        CharArrayWriter writer = new CharArrayWriter();
+        writer.write(data.toCharArray(),0,data.length());
+        writer.writeTo(fileWriter);
+        //System.out.println(writer.toString());
+        fileWriter.flush();//可能需要刷新，否则会被阻塞，写入文件失败（因为writer.writeTo方法加了锁）
+        writer.flush();
+        writer.close();
+
+        CharArrayReader reader = new CharArrayReader(data.toCharArray());
+        int flag = 0;
+        StringBuilder sb = new StringBuilder();
+        while ((flag = reader.read()) != -1){
+            sb.append((char)flag);
+        }
+        reader.close();
+        System.out.println(sb.toString());
+    }
+
+    /**
+     * DataOutputStream 允许应用程序将基本Java数据类型写到基础输出流中。也可用于网络请求中传输数据
+     * DataInputStream 允许应用程序以机器无关的方式从底层输入流中读取基本的Java类型,需要提前知道数据类型，读的顺序必须和写的顺序相同
+     */
+    public static void dosAndDis()throws IOException{
+        FileOutputStream fileOutputStream = new FileOutputStream(FILE_PATH);
+        DataOutputStream dataOutputStream = new DataOutputStream(fileOutputStream);
+        //String data = "好好学习";
+        int a = 666;
+        char b = 'b';
+        //写入
+        dataOutputStream.writeInt(a);
+        dataOutputStream.writeChar(b);
+        //dataOutputStream.write(data.getBytes());
+        dataOutputStream.flush();
+        dataOutputStream.close();
+
+        //按顺序读
+        FileInputStream fileInputStream = new FileInputStream(FILE_PATH);
+        DataInputStream dataInputStream = new DataInputStream(fileInputStream);
+        int A = dataInputStream.readInt();
+        char B = dataInputStream.readChar();
+        System.out.println("A:" + A + ",B:" + B);
+
+    }
+
+    public static void dataOutputStreamTestOfNet() throws IOException {
+        URL url = new URL("www.baidu.com");
+        String data = "{value:1}";
+        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+        connection.setDoInput(true);
+        connection.setDoOutput(true);
+        connection.setRequestProperty("Accept", "application/json"); // 设置接收数据的格式
+        connection.setRequestProperty("Content-Type", "application/json;charset=utf-8"); // 设置发送数据的格式
+        connection.connect();
+
+        final DataOutputStream out = new DataOutputStream(connection.getOutputStream());
+        out.write(data.getBytes("utf-8"));
+        out.flush();
+        out.close();
+
+        //读取返回结果
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String lines;
+        final StringBuffer sbf = new StringBuffer();
+        final String heads = connection.getHeaderField("X-Signature");
+        while ((lines = reader.readLine()) != null) {
+            lines = new String(lines.getBytes(), "utf-8");
+            sbf.append(lines);
+        }
+        sbf.append("&&" + heads);// 分隔符，用以区分返回信息和签名
+        reader.close();
+        System.out.println(sbf.toString());
+        connection.disconnect();//关闭连接
+    }
+
     public static void main(String[] args) throws IOException {
         //writeContentToFileByBytesStream();
         //getContentFromFileByBytesStream();
         //getContentFromFileByCharacterStream();
         //writeContentToFileByCharacterStream();
         //bisAndBos();
-        brAndBw();
+        //brAndBw();
+        //baosAndBais();
+        //carAndCaw();
+        dosAndDis();
     }
 }
