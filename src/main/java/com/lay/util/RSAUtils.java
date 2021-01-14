@@ -35,7 +35,7 @@ public class RSAUtils {
     /**
      * 数据rsa加密
      * @param plainText 明文
-     * @param key 海尔提供的私钥
+     * @param key 私钥
      */
     public static String encryptRSA(String plainText, String key) throws Exception {
         byte[] buffer = plainText.getBytes(StandardCharsets.UTF_8);
@@ -47,7 +47,7 @@ public class RSAUtils {
     /**
      * 数据rsa解密, 与加密过程相反
      * @param cipherText 密文
-     * @param key 海尔自己持有的公钥
+     * @param key 公钥
      */
     public static String decryptRSA(String cipherText, String key) throws Exception {
         byte[] buffer = Base64.decodeBase64(cipherText);
@@ -111,7 +111,7 @@ public class RSAUtils {
     /**
      * 加密
      * @param data 源数据
-     * @param key 海尔提供的私钥
+     * @param key 私钥
      */
     private static byte[] encryptByKey(byte[] data, String key)
         throws Exception {
@@ -146,7 +146,7 @@ public class RSAUtils {
     /**
      *
      * @param encryptedData 已加密数据
-     * @param key 海尔自己持有的公钥
+     * @param key 公钥
      */
     public static byte[] decryptByKey(byte[] encryptedData, String key)
         throws Exception {
