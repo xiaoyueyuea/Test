@@ -22,7 +22,7 @@ public class SocketServerOneToOne {
         int port = 7000;
         // 在端口上创建一个服务器套接字(绑定端口)
         ServerSocket serverSocket = new ServerSocket(port);
-        // 监听来自客户端的连接
+        // 监听来自客户端的连接(服务器等待连接，此方法将阻塞当前服务线程，直到连接到来，返回一个新的套接口对象)
         Socket socket = serverSocket.accept();
 
         DataInputStream dis = new DataInputStream(

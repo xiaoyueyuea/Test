@@ -16,7 +16,7 @@ import java.util.concurrent.Executors;
  * <p>
  * 2021/1/18 lei.yue 1.0 create file
  */
-//服务器端(与客户端一对多)
+//服务器端(与客户端一对多)。支持不断地并发响应网络中的客户请求。关键的地方在于多线程机制的运用，同时利用线程池可以改善服务器程序的性能。
 public class SocketServerOneToMany {
     public static void main(String[] args) throws IOException {
 
