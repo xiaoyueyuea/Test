@@ -1,0 +1,11 @@
+1.YYYY与yyyy的区别
+  大多数情况下格式日期都是用的SimpleDateFormat，比如说把一个日期格式成"yyyy-MM-dd"的形式。对于年份来说，大写的Y和小写的y其意义是不同
+的。y 是Year,Y 表示的是Week year。Week year 意思是当天所在的周属于的年份，一周从周日开始，周六结束，只要本周跨年，那么这周就算入下一年。
+2.BigDecimal
+  i)禁止使用构造方法BigDecimal(double)的方式把double值转为BigDecimal对象。
+    BigDecimal(double)存在精度损失风险，如 BigDecimal b = new BigDecimal(0.1F);实际存储的值为0.10000000149
+    优先推荐入参为String的构造方法或使用BigDecimal的valueOf方法
+    BigDecimal b1 = new BigDecimal("0.1");
+    BigDecimal b2 = BigDecimal.valueOf(0.1);【此方法内部执行了Double的toString，按double实际能表达的精度进行了截断】
+ ii)BigDecimal的等值比较应使用compareTo()，不能使用equals()
+    equals()会比较值和精度(如1.0和1.00会返回false)，而compareTo()只比较值
