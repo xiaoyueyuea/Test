@@ -1,5 +1,8 @@
 package com.lay.threads.concurrentUtilKit.atomic;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 /**
  * @Version 1.0
  * @Author lei.yue
@@ -12,6 +15,9 @@ package com.lay.threads.concurrentUtilKit.atomic;
  */
 public class Main {
     public static void main(String[] args) {
-        
+        // 创建线程池
+        ExecutorService exec = Executors.newCachedThreadPool();
+        exec.execute(new AtomicBooleanTest("Lay"));
+        exec.execute(new AtomicBooleanTest("Krispy"));
     }
 }
