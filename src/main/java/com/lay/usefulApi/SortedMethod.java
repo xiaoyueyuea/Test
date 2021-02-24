@@ -3,7 +3,7 @@ package com.lay.usefulApi;
 import com.alibaba.fastjson.JSONObject;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lay.bean.ResultBean;
-import com.lay.util.JsonResult;
+import com.lay.util.controllerResponse.JsonResult;
 
 import java.io.IOException;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package com.lay.util;
+package com.lay.util.controllerResponse;
 
 /**
  * @Version 1.0
