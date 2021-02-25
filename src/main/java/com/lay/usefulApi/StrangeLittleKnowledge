@@ -12,3 +12,5 @@
     equals()会比较值和精度(如1.0和1.00会返回false)，而compareTo()只比较值
 
 3.RESTful API 设计规范:https://github.com/godruoyi/restful-api-specification
+
+4.static:被static修饰的变量、被static修饰的方法统一属于类的静态资源，是类实例之间共享的，换言之，一处变、处处变。静态资源是类初始化的时候加载的，而非静态资源是类new的时候加载的。类的初始化早于类的new
