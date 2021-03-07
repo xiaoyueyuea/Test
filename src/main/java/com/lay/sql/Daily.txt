@@ -2,3 +2,6 @@
 例子:select * from tbl_credit_order o where EXISTS(select * from tbl_credit_deposit d where d.credit_order_id = o.id and d.state <> 0)
 说明:EXISTS用于检查子查询是否至少会返回一行数据，该子查询实际上并不返回任何数据，而是返回值True或False。此sql返回能使子查询中"d.credit_order_id = o.id and d.state <> 0"成立的order。
 比较：通常情况下采用exists要比in效率高，因为IN不走索引，但要看实际情况具体使用。另外，not exists都比not in要快。
+
+2.为什么在sql查询中需要使用xxx is null而不能使用xxx=null
+在其它的语言中，逻辑表达式只有两种，要么是true,要么就是false。而sql中却存在第三个逻辑表达式UnKnown，这个是sql中特有的。一般情况下我们将任何值(包括NULL本身)与NULL做比较的时候，都会返回UnKnown。而在查询表达式中(比如where与having中)，UnKnown会视为false。
