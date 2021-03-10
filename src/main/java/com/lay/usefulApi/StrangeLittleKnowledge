@@ -16,3 +16,13 @@
 4.static:被static修饰的变量、被static修饰的方法统一属于类的静态资源，是类实例之间共享的，换言之，一处变、处处变。静态资源是类初始化的时候加载的，而非静态资源是类new的时候加载的。类的初始化早于类的new
 
 5.BeanUtils.copyProperties不能拷贝List和数组属性
+
+6.@JsonFormat和@DateTimeFormat
+  i)@JsonFormat:一般是由后端传值给前端时，将Date类型属性转换成String。
+    pattern:是你需要转换的时间日期的格式
+    timezone：是时间设置为东八区，避免时间在转换中少8小时.
+    例如： @JsonFormat(pattern="yyyy-MM-dd",timezone="GMT+8")
+           private Date sourceDateStart;
+ ii)@DatetimeFormat:一般是由前端传值给后端时,将String转换成Date类型。
+    例如：  @DateTimeFormat(pattern = "yyyy-MM-dd")
+           private Date sourceDateStart;
