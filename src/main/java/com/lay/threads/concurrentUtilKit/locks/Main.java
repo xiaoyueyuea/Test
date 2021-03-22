@@ -1,5 +1,6 @@
 package com.lay.threads.concurrentUtilKit.locks;
 
+import java.math.BigDecimal;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
@@ -17,15 +18,15 @@ import java.util.concurrent.TimeUnit;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        ExecutorService exc = Executors.newCachedThreadPool();
-
-        for(int i = 0;i < 1000000;i++){
-            exc.execute(new VolatileTest());
-        }
-
-        //等待线程池中所有线程执行完毕
-        exc.shutdown();
-        exc.awaitTermination(1, TimeUnit.MINUTES);
-        System.out.println(VolatileTest.data);
+//        ExecutorService exc = Executors.newCachedThreadPool();
+//
+//        for(int i = 0;i < 1000000;i++){
+//            exc.execute(new VolatileTest());
+//        }
+//
+//        //等待线程池中所有线程执行完毕
+//        exc.shutdown();
+//        exc.awaitTermination(1, TimeUnit.MINUTES);
+//        System.out.println(VolatileTest.data);
     }
 }

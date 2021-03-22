@@ -17,7 +17,7 @@ public class VolatileTest implements Runnable{
 
     @Override
     public void run() {
-        //volatile能保证可见性(将最后更新的值即时刷新到主存)，原子性(但volatile++这种复合操作不具备原子性)
+        //volatile只能保证可见性(将最后更新的值即时刷新到主存)
         data ++;
     }
 }

@@ -15,7 +15,7 @@
 
 4.static:被static修饰的变量、被static修饰的方法统一属于类的静态资源，是类实例之间共享的，换言之，一处变、处处变。静态资源是类初始化的时候加载的，而非静态资源是类new的时候加载的。类的初始化早于类的new
 
-5.BeanUtils.copyProperties不能拷贝List和数组属性
+5.BeanUtils.copyProperties不能拷贝List和数组属性。属性名相同但类型不同的属性不可拷贝
 
 6.@JsonFormat和@DateTimeFormat
   i)@JsonFormat:1.可以把后端传给前端的Date转成时间字符串；
