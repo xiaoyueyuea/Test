@@ -27,3 +27,9 @@
  ii)@DatetimeFormat:一般是由前端传值给后端时,将String转换成Date类型。但是只适用于使用类似@RequestParam接受参数。即GET请求，url拼接的参数才生效，在@RequestBody下是无效的。
     例如：  @DateTimeFormat(pattern = "yyyy-MM-dd")
            private Date sourceDateStart;
+
+7.Java数字转字符串自动补0的实现
+      int n = 19;
+      //%0代表前面补充0, 4代表长度为4, d代表参数为十进制整数
+      String str = String.format("%04d", n);
+      System.out.println(str); //0019
