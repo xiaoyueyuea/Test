@@ -33,3 +33,5 @@
       //%0代表前面补充0, 4代表长度为4, d代表参数为十进制整数
       String str = String.format("%04d", n);
       System.out.println(str); //0019
+
+8.HashMap相关：https://baijiahao.baidu.com/s?id=1662733945029523270&wfr=spider&for=pc
