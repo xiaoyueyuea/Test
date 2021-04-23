@@ -35,3 +35,14 @@
       System.out.println(str); //0019
 
 8.HashMap相关：https://baijiahao.baidu.com/s?id=1662733945029523270&wfr=spider&for=pc
+
+9.事务注解 @Transactional：https://blog.csdn.net/yuanlaishini2010/article/details/45792069
+
+10.@Transactional注解失效的3种场景(https://mp.weixin.qq.com/s/NzuCMuVx2OsvTmcIxhAFIA)：
+   i)Transactional注解标注方法修饰符为非public时
+     分析：@Transactional是基于动态代理实现的，标注@Transactional的方法如果修饰符不是public，那么就默认方法的@Transactional信息为空，那么将不会对bean实例进行代理对象创建或者不会对方法进行代理调用
+  ii)在类内部调用调用类内部@Transactional标注的方法(同一个类中调用)
+     分析：同上，事务管理是基于动态代理对象的代理逻辑实现的，如果在类内部调用类内部的事务方法，这个调用事务方法的过程并不是通过代理对象来调用的，而是直接通过this对象来调用方法，绕过了代理对象，那么肯定也没有代理逻辑了
+     解决：在同一个类中不直接调用，而通过自身实现的接口调用，也能开启事务管理（可以但没必要）
+ iii)事务方法内部捕捉了异常，没有抛出新的异常，导致事务操作不会进行回滚
+     分析：事务想要回滚，必须能够在代理逻辑中捕捉到异常才行，如果异常中途被捕捉掉，那么事务将不会回滚
