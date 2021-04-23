@@ -46,3 +46,14 @@
      解决：在同一个类中不直接调用，而通过自身实现的接口调用，也能开启事务管理（可以但没必要）
  iii)事务方法内部捕捉了异常，没有抛出新的异常，导致事务操作不会进行回滚
      分析：事务想要回滚，必须能够在代理逻辑中捕捉到异常才行，如果异常中途被捕捉掉，那么事务将不会回滚
+
+11.Spring Event事件监听（实用）
+   作用：使用观察者设计模式，使得代码松耦合。一个 Bean 处理完成任务后希望通知其它 Bean 或者说 一个Bean 想观察监听另一个Bean的行为。同步的将代码解耦
+   实现：i)自定义事件（消息体：一个传递参数的bean）:继承 ApplicationEvent
+       ii)定义监听器：实现 ApplicationListener 或者通过 @EventListener 注解到方法上(方法参数为定义的消息体)
+      iii)定义发布者：通过ApplicationEventPublisher.publishEvent(event)进行发布
+   关于@TransactionalEventListener：使用@TransactionalEventListener定义监听器。可解决因事务还没有提交，导致获取不到正确数据的问题。
+   @TransactionalEventListener分为4个监听类型：1.BEFORE_COMMIT; 2.AFTER_COMMIT; 3.AFTER_ROLLBACK; 4.AFTER_COMPLETION(表示事务完成，包括提交和回滚)
+
+12.@Async:在Spring中，基于@Async标注的方法，称之为异步方法；这些方法将在执行的时候，将会在独立的线程中被执行，调用者无需等待它的完成，即可继续其他的操作。
+          注意：与@Transactional共同注解同一个方法，在其调用数据库操作之时，将无法产生事务管理的控制，原因就在于其是基于异步处理的操作。可以将需要事务管理操作的方法放置到异步方法内部，在内部被调用的方法上添加@Transactional.
