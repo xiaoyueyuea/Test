@@ -38,7 +38,7 @@
 
 9.事务注解 @Transactional：https://blog.csdn.net/yuanlaishini2010/article/details/45792069
 
-10.@Transactional注解失效的3种场景(https://mp.weixin.qq.com/s/NzuCMuVx2OsvTmcIxhAFIA)：
+10.@Transactional注解失效的场景(https://baijiahao.baidu.com/s?id=1661565712893820457&wfr=spider&for=pc)：
    i)Transactional注解标注方法修饰符为非public时
      分析：@Transactional是基于动态代理实现的，标注@Transactional的方法如果修饰符不是public，那么就默认方法的@Transactional信息为空，那么将不会对bean实例进行代理对象创建或者不会对方法进行代理调用
   ii)在类内部调用调用类内部@Transactional标注的方法(同一个类中一个非事务的方法调用另一个事务方法)
