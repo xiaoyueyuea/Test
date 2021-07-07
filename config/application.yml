@@ -4,3 +4,5 @@ spring:
     url: jdbc:mysql://mysql.middleware-mysql.svc.cluster.local:3306/cms_db?useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
     username: root
     password: root
+  banner:
+    location: classpath:lay.txt
