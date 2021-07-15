@@ -61,3 +61,5 @@
 13.@PostConstruct和@PreDestroy注解:java自带注解,这两个注解被用来修饰一个非静态的void()方法.而且这个方法不能有抛出异常声明。
    @PostConstruct:被修饰的方法会在服务器加载Servlet的时候运行，并且只会被服务器执行一次。
    执行顺序： 构造方法 > @Autowired(属性注入) > @PostConstruct
+
+14.接口是可以多继承的。
