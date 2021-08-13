@@ -7,3 +7,9 @@ Exists与IN比较：通常情况下采用exists要比in效率高，但要看实�
 
 2.为什么在sql查询中需要使用xxx is null而不能使用xxx=null
 在其它的语言中，逻辑表达式只有两种，要么是true,要么就是false。而sql中却存在第三个逻辑表达式UnKnown，这个是sql中特有的。一般情况下我们将任何值(包括NULL本身)与NULL做比较的时候，都会返回UnKnown。而在查询表达式中(比如where与having中)，UnKnown会视为false。
+
+3.查询某些字段相同的记录
+例如:SELECT r.id,COUNT(r.customer_id) AS count1,COUNT(r.associate_customer_id) AS count2,COUNT(r.type) AS count3
+     FROM tbl_customer_relation r WHERE r.type = "GUARANTEE" OR r.type = "GUARANTEE_COMPANY"
+     GROUP BY r.customer_id,r.associate_customer_id,r.type HAVING count1 > 1 AND count2 > 1 AND count3 > 1;
+说明:查询customer_id,associate_customer_id,type三个字段都相同的记录,通过group by实现

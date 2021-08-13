@@ -1,6 +1,5 @@
 package com.lay.mq;
 
-import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,10 +7,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
+import java.util.Objects;
 
 /**
  * @Version 1.0
@@ -55,7 +55,14 @@ public class RedisMQTest {
 //        String a = null;
 //        String b = "2";
 //        System.out.println(a + b);
-        
 
+        String s = LocalDate.of(2021, 8, 11).toString();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate parse = LocalDate.parse(s, dateTimeFormatter);
+        System.out.println(parse);
+        String sss = parse.format(DateTimeFormatter.ofPattern("yyyy年MM月dd日"));
+        System.out.println(sss);
     }
+
+
 }
