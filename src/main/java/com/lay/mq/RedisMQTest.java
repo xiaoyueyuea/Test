@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.time.LocalDate;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,12 +56,24 @@ public class RedisMQTest {
 //        String b = "2";
 //        System.out.println(a + b);
 
-        String s = LocalDate.of(2021, 8, 11).toString();
-        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate parse = LocalDate.parse(s, dateTimeFormatter);
-        System.out.println(parse);
-        String sss = parse.format(DateTimeFormatter.ofPattern("yyyy年MM月dd日"));
-        System.out.println(sss);
+//        String s = LocalDate.of(2021, 8, 11).toString();
+//        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//        LocalDate parse = LocalDate.parse(s, dateTimeFormatter);
+//        System.out.println(parse);
+//        String sss = parse.format(DateTimeFormatter.ofPattern("yyyy年MM月dd日"));
+//        System.out.println(sss);
+
+//        Instant instant = Instant.now();
+//        ZonedDateTime zdt = instant.atZone(ZoneId.systemDefault());
+//        System.out.println(zdt.getYear() + "-" + zdt.getMonthValue() + "-" + zdt.getDayOfMonth() + " " + zdt.getHour() + ":" + zdt.getMinute() + ":" + zdt.getSecond());
+//        System.out.println(instant);
+//        System.out.println(zdt);
+//        System.out.println(zdt.toLocalDateTime());
+//        LocalDate localDate = zdt.toLocalDateTime().toLocalDate();
+
+        final LocalDateTime endLocalDateTime = LocalDateTime.now();
+        final LocalDateTime beginLocalDateTime = LocalDateTime.of(endLocalDateTime.getYear(),endLocalDateTime.getMonthValue(),1,0,0);
+        System.out.println(beginLocalDateTime);
     }
 
 
