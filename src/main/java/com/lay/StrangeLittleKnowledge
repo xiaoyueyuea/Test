@@ -77,3 +77,5 @@
                 脏读:读取到了未提交的数据
                 不可重复读:同一个事务中执行完全相同的select语句时可能看到不一样的结果
                 幻读:一个事务读取数据之后，另一个事务执行了insert操作，导致当前事务读取出了之前没有的记录。MySQL、ORACLE、PostgreSQL等成熟的数据库，出于性能考虑，都是使用了以乐观锁为理论基础的MVCC（多版本并发控制）来避免这个问题
+
+17.MYSQL索引、B+树相关：https://mp.weixin.qq.com/s/8nx4yLOg542p_fmqjKDrKw
