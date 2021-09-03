@@ -1,9 +1,11 @@
 package com.lay;
 
+import com.lay.bean.MyConfig;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Import;
 
 /**
  * @Version 1.0
@@ -17,7 +19,8 @@ import org.springframework.context.ConfigurableApplicationContext;
  */
 
 @SpringBootApplication
-@MapperScan("com.yl.mybatis.mapper")//扫描所有mapper
+@MapperScan("com.lay.mybatis.mapper")//扫描所有mapper
+@Import({MyConfig.class})
 public class SpringBootStart {
 
     //默认扫描主程序所在包及其下面的所有子包里面的组件

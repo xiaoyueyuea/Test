@@ -14,7 +14,7 @@ package com.lay.designMode;
 public class Singleton {
 
     //实例声明为静态的私有的
-    private static Singleton instance = new Singleton();
+    private static final Singleton instance = new Singleton();
 
     //构造函数设为私有
     private Singleton(){}

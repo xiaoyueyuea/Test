@@ -12,6 +12,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 /**
  * @Version 1.0
@@ -71,9 +72,14 @@ public class RedisMQTest {
 //        System.out.println(zdt.toLocalDateTime());
 //        LocalDate localDate = zdt.toLocalDateTime().toLocalDate();
 
-        final LocalDateTime endLocalDateTime = LocalDateTime.now();
-        final LocalDateTime beginLocalDateTime = LocalDateTime.of(endLocalDateTime.getYear(),endLocalDateTime.getMonthValue(),1,0,0);
-        System.out.println(beginLocalDateTime);
+//        final LocalDateTime endLocalDateTime = LocalDateTime.now();
+//        final LocalDateTime beginLocalDateTime = LocalDateTime.of(endLocalDateTime.getYear(),endLocalDateTime.getMonthValue(),1,0,0);
+//        System.out.println(beginLocalDateTime);
+
+        Random random = new Random();
+        for (int i = 0;i< 100;i++){
+            System.out.println(random.nextInt(2));
+        }
     }
 
 
