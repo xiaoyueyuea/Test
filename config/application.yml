@@ -6,3 +6,9 @@ spring:
     password: root
   banner:
     location: classpath:lay.txt
+
+#自定义属性
+my:
+  properties:
+    author: LAY
+    age: 23

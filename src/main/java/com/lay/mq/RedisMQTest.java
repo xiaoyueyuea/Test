@@ -1,5 +1,6 @@
 package com.lay.mq;
 
+import com.lay.bean.MyProperties;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,10 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.*;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.util.*;
 
 /**
  * @Version 1.0
@@ -30,6 +28,9 @@ public class RedisMQTest {
 
     @Autowired
     private RedisTemplate<Object,Object> redisTemplate;
+
+    @Autowired
+    private MyProperties myProperties;
 
     @Test
     public void test(){
@@ -76,10 +77,36 @@ public class RedisMQTest {
 //        final LocalDateTime beginLocalDateTime = LocalDateTime.of(endLocalDateTime.getYear(),endLocalDateTime.getMonthValue(),1,0,0);
 //        System.out.println(beginLocalDateTime);
 
-        Random random = new Random();
-        for (int i = 0;i< 100;i++){
-            System.out.println(random.nextInt(2));
-        }
+//        Random random = new Random();
+//        for (int i = 0;i< 100;i++){
+//            System.out.println(random.nextInt(2));
+//        }
+
+//
+//        final List<String> status = new ArrayList<>();
+//        status.add("M1");
+//        status.add("M7");
+//        status.add("M3");
+//        status.add("M4");
+//
+//        String maxOverdueStatus = "N";
+//        int maxLevel = 0;
+//        for(String s : status){
+//            if(!s.equals("N")){
+//                int level = Integer.parseInt(s.replace("M",""));
+//                if(level > maxLevel){
+//                    maxOverdueStatus = s;
+//                    maxLevel = level;
+//                }
+//            }
+//        }
+//        System.out.println(maxOverdueStatus + "###" + maxLevel);
+
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.setTime(new Date());
+//        System.out.println(calendar.get(Calendar.MONTH));
+
+        System.out.println("作者:" + myProperties.getAuthor() + " 年龄:" + myProperties.getAge());
     }
 
 
