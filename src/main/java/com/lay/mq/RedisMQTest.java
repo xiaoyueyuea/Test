@@ -106,7 +106,7 @@ public class RedisMQTest {
 //        calendar.setTime(new Date());
 //        System.out.println(calendar.get(Calendar.MONTH));
 
-        System.out.println("作者:" + myProperties.getAuthor() + " 年龄:" + myProperties.getAge());
+//        System.out.println("作者:" + myProperties.getAuthor() + " 年龄:" + myProperties.getAge());
     }
 
 

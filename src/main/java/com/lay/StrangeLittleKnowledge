@@ -79,3 +79,14 @@
                 幻读:一个事务读取数据之后，另一个事务执行了insert操作，导致当前事务读取出了之前没有的记录。MySQL、ORACLE、PostgreSQL等成熟的数据库，出于性能考虑，都是使用了以乐观锁为理论基础的MVCC（多版本并发控制）来避免这个问题
 
 17.MYSQL索引、B+树相关：https://mp.weixin.qq.com/s/8nx4yLOg542p_fmqjKDrKw
+
+18.常量折叠：在编译过程中，Javac 编译器会进行一个叫做常量折叠的代码优化。常量折叠会把常量表达式的值求出来作为常量嵌在最终生成的代码中，这是 Javac 编译器会对源代码做的极少量优化措施之一(代码优化几乎都在即时编译器中进行)。
+            例如：      String s1 = "str";
+                       String s2 = "ing";
+                       String s3 = "str" + "ing";//相当于"string"
+                       String s4 = s1 + s2;//因为s1,s2为变量，所以不能进行常量折叠（引用的值在程序编译期是无法确定的，编译器无法对其进行优化。）
+                       String s5 ="string";
+                       System.out.println(s3 == s4);//false
+                       System.out.println(s3 == s5);//true
+                       System.out.println(s4 == s5);//false
+            **当s1,s2被修饰为final时,s1+s2便可进行常量折叠，表达式 s3 == s4 == s5 为true
