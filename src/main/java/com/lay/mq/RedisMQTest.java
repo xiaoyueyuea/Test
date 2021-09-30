@@ -25,17 +25,17 @@ import java.util.*;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class RedisMQTest {
-
-    @Autowired
-    private RedisTemplate<Object,Object> redisTemplate;
+//
+//    @Autowired
+//    private RedisTemplate<Object,Object> redisTemplate;
 
     @Autowired
     private MyProperties myProperties;
 
     @Test
     public void test(){
-        //设置值
-        redisTemplate.boundValueOps("name").set("Lay");
+//        //设置值
+//        redisTemplate.boundValueOps("name").set("Lay");
         //设置过期时间
         //redisTemplate.boundValueOps("name").expire(1, TimeUnit.MINUTES);
 //        String name = (String) redisTemplate.boundValueOps("name").get();
@@ -107,6 +107,8 @@ public class RedisMQTest {
 //        System.out.println(calendar.get(Calendar.MONTH));
 
 //        System.out.println("作者:" + myProperties.getAuthor() + " 年龄:" + myProperties.getAge());
+
+        System.out.println(RedisMQTest.class.getSimpleName());
     }
 
 
