@@ -35,7 +35,7 @@ public class RedisMQTest {
     @Test
     public void test(){
         //设置值
-        //redisTemplate.boundValueOps("name").set("Lay");
+        redisTemplate.boundValueOps("name").set("Lay");
         //设置过期时间
         //redisTemplate.boundValueOps("name").expire(1, TimeUnit.MINUTES);
 //        String name = (String) redisTemplate.boundValueOps("name").get();
