@@ -67,6 +67,13 @@ public class RedisMQTest {
 
 
         System.out.println(RedisMQTest.class.getSimpleName());
+
+        final Calendar calendar = Calendar.getInstance();
+        calendar.setTime(new Date());
+        final int currentDay = calendar.get(Calendar.DATE);
+        System.out.println(currentDay);
+
+        System.out.println(true && false || true);
     }
 
 
