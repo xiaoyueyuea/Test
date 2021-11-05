@@ -14,7 +14,10 @@
  如：creat index test on tbl(id,name,age);
      select * from tbl where name = 'LAY' and age = '18'   没有使用id上的索引
 
-2.explain
+2.聚集索引
+https://mp.weixin.qq.com/s/8nx4yLOg542p_fmqjKDrKw
+
+3.explain
 作用：查看sql的执行计划，用来优化执行时间较久的语句。只能解释SELECT操作，其他操作要重写为SELECT后查看执行计划
 参数：*id：id值越大，优先级越高，越先执行
      *select_type：查询类型
@@ -28,6 +31,36 @@
      *rows：表示MySQL根据表统计信息及索引选用情况，估算的找到所需的记录所需要读取的行数
      *Extra：该列包含MySQL解决查询的详细信息
 
+4.dispatcherServlet流程? 是否单例?
+   本质还是一个servlet,生命周期是跟随容器的，所以只有一个实例。详细流程：https://www.jianshu.com/p/8a20c547e245
+
+5.synchronized 和 Lock 区别
+*存在层次：synchronized为关键字，Lock是一个接口
+*锁的释放：synchronized：已获取锁的线程执行完同步代码，释放锁，如果线程执行发生异常，jvm会让线程释放锁； Lock：必须要在finally中通过unlock释放锁，否则容易造成死锁。
+*锁的获取：synchronized：假设A线程获得锁，B线程等待，如果A阻塞，B会一直等待； Lock：分情况而定，Lock有多种获取锁的方式，可以尝试获得锁，不必一直等待。
+*锁状态：  synchronized：无法判断； Lock：可以判断，tryLock
+*锁类型：  synchronized：可重入，不可中断，非公平； Lock：可重入，可中断，可公平（两者都可）
+*synchronized使用Object对象本身的wait 、notify、notifyAll调度机制，而Lock可以使用Condition进行线程之间的调度
+*性能：    在Java1.5中，synchronize是性能低效的。因为这是一个重量级操作，需要调用操作接口，导致有可能加锁消耗的系统时间比加锁以外的操作还多。相比之下使用Java提供的Lock对象，性能更高一些。
+           到了Java1.6，synchronize进行了很多优化，有适应自旋，锁消除，锁粗化，轻量级锁，偏向锁等等。导致在Java1.6上synchronize的性能并不比Lock差。
+
+6.自旋锁
+*定义：当一个线程获取锁时，如果锁已经被其它线程获取，那么该线程将循环等待，然后不断的判断是否能成功获取到锁，直到获取到锁才退出循环
+*优点：自旋锁不会使线程状态发生切换，线程一直都是active的，不会使线程进入阻塞状态，减少了不必要的上下文切换，执行速度快。
+*缺点：在持有锁的线程占用锁时间过长或锁的竞争过于激烈的情况下，线程在自旋过程中会长时间获取不到锁资源，将引起CPU的浪费。
+
+7.线程有哪些状态
+*新建状态（New）：新建了一个线程对象
+*就绪状态（Runnable）：其它线程调用了start()，该状态的线程位于“可运行线程池”中，变得可运行，只等待获取CPU的使用权，其它运行所需资源已全部获得。
+*运行状态（Running）：就绪状态的线程获取到了CPU
+*阻塞状态（Blocked）：因为某种原因放弃CPU使用权，暂时停止运行。直到线程重新进入就绪状态，才有机会重新运行。（调用了sleep(),join(),wait()等方法，或者获取对象同步锁时发现被其它线程占用）
+*死亡状态（Dead）：线程已执行完毕或因异常退出了run()方法
+
+8.HashMap、HashTable、ConcurrentHashMap
+
+9.什么是幂等性（idempotent），put和post的区别
+在编程中一个幂等操作的特点是执行多次或一次，其影响是相同的，所以get,put,delete都是幂等的
+put一般用于更新操作，具有幂等性,post一般用于新增资源，不具备幂等性
 
 
 
