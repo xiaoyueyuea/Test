@@ -74,6 +74,8 @@ public class RedisMQTest {
         System.out.println(currentDay);
 
         System.out.println(true && false || true);
+
+        ////////tttttttttttttt
     }
 
 
