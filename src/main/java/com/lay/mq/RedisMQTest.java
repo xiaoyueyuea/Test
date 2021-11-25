@@ -76,6 +76,10 @@ public class RedisMQTest {
         System.out.println(true && false || true);
 
         ////////tttttttttttttt
+
+
+
+        //我是一个新的分支!!!!!!!!!!!!!!!!!!!!!
     }
 
 
