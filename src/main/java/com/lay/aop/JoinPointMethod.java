@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class JoinPointMethod {
 
-    public void printSomething(){
+    public void printSomething(String args){
         System.out.println("目标方法");
     }
 

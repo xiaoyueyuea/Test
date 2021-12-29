@@ -4,6 +4,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
+
 /**
  * @Version 1.0
  * @Author lei.yue
@@ -34,7 +36,7 @@ public class LogAspects {
 
     @Around("pointCut()")
     public Object logAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        System.out.println("@Around:执行目标方法之前");
+        System.out.println("@Around:执行目标方法之前,参数为:" + Arrays.toString(joinPoint.getArgs()));
         Object obj = joinPoint.proceed();//手动执行目标方法
         System.out.println("@Around:执行目标方法之后");
         return obj;

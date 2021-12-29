@@ -26,6 +26,6 @@ public class AopTest {
 
     @Test
     public void test(){
-        joinPointMethod.printSomething();
+        joinPointMethod.printSomething("test");
     }
 }
