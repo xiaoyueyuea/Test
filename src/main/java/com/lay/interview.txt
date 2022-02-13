@@ -82,6 +82,48 @@ put一般用于更新操作，具有幂等性,post一般用于新增资源，不
 17.多线程
 
 
+二、封面新闻
+1.想要在数据库中存储emoji表情，需要怎么操作
+emoji表情为4个字节的字符，而utf8字符集只支持1-3个字节的字符，所以需要将字符集修改为支持1-4个字节的utf8mb4
+
+2.cookie和session的区别和联系
+区别： 1.cookie存在本地浏览器上，session存在服务器上
+       2.cookie不是很安全，别人可以分析存放在本地的COOKIE并进行COOKIE欺骗，考虑到安全应当使用session
+       3.session会在一定时间内保存在服务器上。当访问增多，会比较占用你服务器的性能，考虑到减轻服务器性能方面，应当使用COOKIE
+       4.单个cookie保存的数据不能超过4K，很多浏览器都限制一个站点最多保存20个cookie
+
+联系：session是通过cookie来工作的，sessionID以cookie的形式存在浏览器中。
+
+3.有哪些GC策略以及它们各自的优点(https://javadoop.com/post/jvm-memory-management)
+Serial(串行收集器)：适合内存有限的情况下，但回收慢
+Parallel(并行收集器)：效率高，但当Heap过大时，应用程序暂停时间较长
+CMS(Concurrent Mark-Sweep 并发收集器)：Old区回收暂停时间短，但产生内存碎片、整个GC耗时长、比较耗CPU
+G1(Garbage First)：可设置预期的停顿时间，不产生内存碎片，但只适合大内存，一般6G以上，小内存不适用
+
+4.有几种类加载器？它们的父子关系是怎样的？双亲委派？什么场景下使用自定义类加载器？（https://blog.csdn.net/codeyanbao/article/details/82875064）
+
+                                        Bootstrap classLoader：主要负责加载核心的类库(rt.jar等)，构造ExtClassLoader和APPClassLoader
+                                                 ↑
+                                           ExtClassLoader：主要负责加载jre/lib/ext目录下的一些扩展的jar
+                                                 ↑
+                                           AppClassLoader：主要负责加载用户路径CLASSPATH路径下的类包
+                                                 ↑向上委托
+                                           用户自定义加载器：负责加载用户自定义路径下的类包
+
+双亲委派机制：当一个类加载器收到了类加载请求，如果这个类没有被加载过，它首先不会尝试自己去加载这个类，而是把这个请求委派给父加载器去完成，
+             每一个层次类加载器都是如此，因此所有的加载请求都应该传到启动类加载，只有当父类加载器反馈自己无法完成这个请求时（在它的加载
+             路径下没有找到所需的Class），子类加载器才会尝试自己去加载。
+
+双亲委派优势：1.沙箱安全机制：比如自己写的String.class类不会被加载，因为这种系统级别的类已经被Bootstrap classLoader加载了（最先尝试加载），
+                           这样可以防止核心库被随意篡改。
+             2.避免类重复加载：当父ClassLoader已经加载了该类的时候，就不需要子加载器再加载一次。
+
+自定义加载器应用场景：隔离加载类、修改类加载的方式、扩展加载源、防止源码泄露
+
+
+
+
+
 
 
 
