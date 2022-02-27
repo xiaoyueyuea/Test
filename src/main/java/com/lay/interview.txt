@@ -10,7 +10,7 @@
 *or语句前后没有同时使用索引。当or左右查询字段只有一个是索引，该索引失效，只有当or左右查询字段均为索引时，才会生效
 *在索引列上使用 IS NULL , IS NOT NULL , != 操作，索引可能失效(注意是可能!)  https://mp.weixin.qq.com/s/CEJFsDBizdl0SvugGX7UmQ
 *当全表扫描速度比索引速度快时，mysql会使用全表扫描，此时索引失效
-*组合索引，没有使用第一列索引
+*组合索引，没有使用第一列索引(最左匹配)
  如：creat index test on tbl(id,name,age);
      select * from tbl where name = 'LAY' and age = '18'   没有使用id上的索引
 
