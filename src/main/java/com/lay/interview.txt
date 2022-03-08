@@ -149,10 +149,15 @@ https://www.cnblogs.com/onesea/p/13053697.html
 
 四、杉数科技、傲梅科技
 1.HashMap如何遍历数据
+https://baijiahao.baidu.com/s?id=1662733945029523270&wfr=spider&for=pc
 
 2.CAS有哪些缺点
+ABA问题
+循环时间长、开销大：自旋CAS如果长时间不成功，会给CPU带来非常大的执行开销
+只能保证一个共享变量的原子操作
 
 3.synchronized底层实现以及如何实现可重入
+底层实现：synchronized 是由一对 monitorenter/monitorexit 指令实现的，monitor 对象是同步的基本实现单元。在JVM处理字节码会出现相关指令。
 
 4.spring event底层如何实现
 
@@ -161,6 +166,8 @@ https://www.cnblogs.com/onesea/p/13053697.html
 6.OSI七层和四层
 
 7.ArrayList、LinkedList插入时间复杂度
+
+8.两张数据表通过Inner Join连接，ON条件为 ‘姓名’ = ‘张三’，其中表A存在3条姓名为张三的记录，表B存在3条，问最终的查询结果有几条
 
 
 
