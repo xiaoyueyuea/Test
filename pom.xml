@@ -120,20 +120,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-    <!-- 测试依赖自己创建的项目jar包 -->
-    <dependency>
-      <groupId>com.lay.test</groupId>
-      <artifactId>maven-test</artifactId>
-      <version>1.0-SNAPSHOT</version>
-
-      <!-- 用于排除依赖 用于解决因传递依赖而引入同一个jar包的不同版本导致的jar包冲突 -->
-<!--      <exclusions>-->
-<!--        <exclusion>-->
-<!--          <groupId></groupId>-->
-<!--          <artifactId></artifactId>-->
-<!--        </exclusion>-->
-<!--      </exclusions>-->
-    </dependency>
   </dependencies>
 
   <build>
