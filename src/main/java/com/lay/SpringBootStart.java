@@ -4,6 +4,7 @@ import com.lay.bean.MyConfig;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Import;
 
@@ -18,8 +19,8 @@ import org.springframework.context.annotation.Import;
  * 2020/7/24 lei.yue 1.0 create file
  */
 
-@SpringBootApplication
-@MapperScan("com.lay.mybatis.mapper")//扫描所有mapper
+@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class})
+//@MapperScan("com.lay.mybatis.mapper")//扫描所有mapper
 @Import({MyConfig.class})
 public class SpringBootStart {
 

@@ -1,6 +1,7 @@
 package com.lay.mq;
 
 import com.lay.bean.MyProperties;
+import com.lay.test.TimeUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,8 @@ import java.util.*;
  * <p>
  * 2020/11/10 lei.yue 1.0 create file
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class RedisMQTest {
 //
 //    @Autowired
@@ -75,6 +76,7 @@ public class RedisMQTest {
 
         System.out.println(true && false || true);
 
+        TimeUtils.getCurrentDate();
         ////////tttttttttttttt
 
 
@@ -83,6 +85,18 @@ public class RedisMQTest {
 
 
         //小新pro16第一次提交!!!!
+    }
+
+    public static void main(String[] args){
+//        String str = new String("2021");
+//        changeStr(str);
+//        System.out.println(Runtime.getRuntime().availableProcessors());
+        Double d = 20.0;
+        System.out.println(d.intValue() + "%");
+    }
+
+    public static void changeStr(String  str){
+        str = new String("2022");
     }
 
 
