@@ -163,7 +163,18 @@ ABA问题
 
 4.spring event底层如何实现
 
-5.redis数据结构（>5）
+5.redis数据结构(指的是value)
+五种常用数据类型
+String:底层为简单动态字符串，采用预分配冗余空间的方式减少内存的频繁分配;
+List:底层为双向链表;
+Set:底层为dict字典，使用hash表实现
+Hash:是一个String类型的field和value的映射表，类似于Map<String, Object>, 适用于存储对象。底层的数据结构有两种，当field-value的长度较短且个数少时，使用ziplist；否则为hashtable
+Zset:与set十分相似，不同的是有序集合的每一个成员都关联了一个score，集合的成员是唯一的，但评分可以重复。底层使用了hash和跳跃表，hash的作用是关联value和权重score;跳跃表用于给元素排序，根据score范围获取元素列表
+
+新的数据类型
+Bitmaps：可以实现对位的操作；
+HyperLogLog：用于做基数统计的算法，在输入元素的数量和体积非常大时，计算所需空间总是固定的，并且很小(基数指的是集合中不重复的元素)
+Geographic：地理信息的缩写，就是元素的二维坐标，在地图上就是经纬度
 
 6.OSI七层和四层
 
