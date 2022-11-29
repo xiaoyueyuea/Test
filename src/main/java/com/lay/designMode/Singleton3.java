@@ -24,7 +24,7 @@ public class Singleton3 {
             synchronized (Singleton3.class){
                 if(INSTANCE == null){//避免多次实例化
                     //1.为INSTANCE分配内存空间;2.初始化INSTANCE；3.将INSTANCE指向分配的内存地址
-                    INSTANCE = new Singleton3();//这行代码实际包含3个指令，在多线程环境下如果没有加volatile可能导致线程不安全
+                    INSTANCE = new Singleton3();//这行代码实际包含3个指令，在多线程环境下如果没有加volatile可能导致线程不安全,导致未完全初始化的对象被获取到
                 }
             }
         }
