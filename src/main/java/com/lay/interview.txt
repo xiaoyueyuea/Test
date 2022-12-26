@@ -184,6 +184,42 @@ Geographic：地理信息的缩写，就是元素的二维坐标，在地图上�
 3 × 3
 
 
+五、合纵药易购
+
+1.innodb底层实现原理
+https://blog.csdn.net/davice_li/article/details/125165384
+内存架构主要分为三大块：缓冲池、重做缓冲池和额外内存池
+
+2.innodb和myisam的区别
+事务：innodb支持事务、回滚，而myisam不支持，但查询速度要比innodb快
+主键：InnoDB规定，如果没有设置主键，就自动的生成一个6字节的主键，而MyISAM允许没有任何索引和主键的存在，索引就是行的地址
+外键：innodb支持外键，myisam不支持
+表锁：InnoDB支持行锁和表锁，而MyISAM只支持表锁
+全文索引：InnoDB不支持全文索引，但是可以用插件来实现相应的功能，而MyISAM是本身就支持全本索引
+行数：InnoDB获取行数时，需要扫全表。而MyISAM保存了当前表的总行数，直接读取即可。
+
+3.ArrayList和LinkedList的区别
+ArrayList底层是动态数组，LinkedList底层是双向链表
+get(int index)操作  ArrayList  O(1)   LinkedList O(n)
+add(E e)操作        ArrayList  O(1)   LinkedList O(1)
+add(int index, E element)  ArrayList  O(n)   LinkedList O(n)
+
+4. redis做分布式锁原理
+set key value有个带有NX参数的命令，这是一个原子性加锁的命令
+redis命令：SET lockKey uid EX expireTime NX
+代码形式：Boolean lock = redisTemplate.opsForValue().setIfAbsent( "lock","111");
+
+5.hashmap 1.7和1.8的区别
+底层结构：hashmap1.7底层结构是entry数组+链表，hashmap1.8底层结构是node数组+链表+红黑树
+扩容策略：扩容时1.8会保持原链表的顺序并且在元素插入后检测是否需要扩容(尾插法)，1.7会颠倒链表的顺序并且在元素插入前检测是否需要扩容(头插法)
+
+6.RocketMQ和Kafka的区别
+https://blog.csdn.net/shijinghan1126/article/details/104724407
+
+
+
+
+
 
 
 
