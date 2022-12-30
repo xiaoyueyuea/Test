@@ -37,6 +37,9 @@ https://mp.weixin.qq.com/s/8nx4yLOg542p_fmqjKDrKw
 5.synchronized 和 Lock 区别
 *存在层次：synchronized为关键字，Lock是一个接口
 *锁的释放：synchronized：已获取锁的线程执行完同步代码，释放锁，如果线程执行发生异常，jvm会让线程释放锁； Lock：必须要在finally中通过unlock释放锁，否则容易造成死锁。
+*等待是否可中断：synchronized不可中断，除非抛出异常；ReentrantLock可中断:1.设置超时方法tryLock(Long timeout, Timeunit unit);2.使用lockInterruptibly
+*加锁是否公平：synchronized非公平，lock两者皆可
+*锁绑定多个condition：synchronized没有；ReentrantLock用来实现分组唤醒需要唤醒的线程，可以精确唤醒，而不是像synchronized随机唤醒
 *锁的获取：synchronized：假设A线程获得锁，B线程等待，如果A阻塞，B会一直等待； Lock：分情况而定，Lock有多种获取锁的方式，可以尝试获得锁，不必一直等待。
 *锁状态：  synchronized：无法判断； Lock：可以判断，tryLock
 *锁类型：  synchronized：可重入，不可中断，非公平； Lock：可重入，可中断，可公平（两者都可）
