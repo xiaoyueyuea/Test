@@ -98,10 +98,10 @@ emoji表情为4个字节的字符，而utf8字符集只支持1-3个字节的字�
 联系：session是通过cookie来工作的，sessionID以cookie的形式存在浏览器中。
 
 3.有哪些GC策略以及它们各自的优点(https://javadoop.com/post/jvm-memory-management)
-Serial(串行收集器)：适合内存有限的情况下，但回收慢
-Parallel(并行收集器)：效率高，但当Heap过大时，应用程序暂停时间较长
-CMS(Concurrent Mark-Sweep 并发收集器)：Old区回收暂停时间短，但产生内存碎片、整个GC耗时长、比较耗CPU
-G1(Garbage First)：可设置预期的停顿时间，不产生内存碎片，但只适合大内存，一般6G以上，小内存不适用
+Serial(串行收集器)：为单线程环境设计且只使用一个线程进行垃圾回收，会暂停所有的用户线程
+Parallel(并行收集器)：多个垃圾收集线程并行工作，此时用户线程也是暂停的，适用于科学计算/大数据处理等弱交互场景
+CMS(Concurrent Mark-Sweep 并发收集器)：用户线程和垃圾回收线程同时执行（不一定是并行，可以交替执行），系统停顿时间短，但会产生内存碎片且对cpu压力较大
+G1(Garbage First)：将堆内存分隔成不同区域然后并发的对其进行垃圾回收。与CMS相比，G1不会产生很多内存碎片，并且用户可以指定期望的停顿时间
 
 4.有几种类加载器？它们的父子关系是怎样的？双亲委派？什么场景下使用自定义类加载器？（https://blog.csdn.net/codeyanbao/article/details/82875064）
 
