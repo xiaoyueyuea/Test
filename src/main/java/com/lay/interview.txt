@@ -219,6 +219,23 @@ redis命令：SET lockKey uid EX expireTime NX
 6.RocketMQ和Kafka的区别
 https://blog.csdn.net/shijinghan1126/article/details/104724407
 
+六、天润融通
+
+1.ReentrantLock可重入原理
+通过AQS中的state变量计数，锁状态为0表示可加锁，使用CAS将状态设置成1进行锁的争抢。锁重入时，状态自增+1
+
+2.ArrayBlockingQueue、LinkedBlockingQueue（阻塞队列）与ArrayList、LinkedList（可当作普通队列）的区别
+阻塞添加：当队列元素存满时，会阻塞加入元素的线程，直到队列不满时才会重新唤醒；
+阻塞删除：当队列元素为空的时候，会阻塞删除元素的线程，直到队列中有元素后才会被唤醒。
+且阻塞队列是线程安全的
+
+3.Es深度分页解决
+
+4.select name from tbl where id =1;//name为'小张'
+  update tbl set name = '小李'
+  问再次select name from tbl where id =1的结果？ //小李
+  坑货面试官，在同一个事务中，执行更新操作后，后续查询是能查到的；非同一个事务不行
+
 
 
 
