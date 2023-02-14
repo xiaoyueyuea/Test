@@ -236,6 +236,26 @@ https://blog.csdn.net/shijinghan1126/article/details/104724407
   问再次select name from tbl where id =1的结果？ //小李
   坑货面试官，在同一个事务中，执行更新操作后，后续查询是能查到的；非同一个事务不行
 
+5.springboot自动装配原理
+1.组合注解@SpringbootApplication中包含了@EnableAutoConfiguration注解
+2.@EnableAutoConfiguration中包含@AutoConfigurationPackage注解用来批量注册启动类所在包下的全部组件，
+  然后通过@Import({AutoConfigurationImportSelector.class})加载autoconfigure包下META-INF目录中spring.factories
+  中写死的配置类（虽然启动时全部加载，但通过@Conditional相关注解实现按需配置）
+3.生效的配置类会加载许多相关组件，相当于自动开启了相关的场景
+
+6.springboot自定义starter
+1.新建starter模块和autoconfigure模块，starter主要用于管理依赖，核心逻辑在autoconfigure模块中，在starter中引入autoconfigure，autoconfigure中引入spring-boot-starter
+2.在autoconfigure模块resources目录下新建META-INF/spring.factories（模仿官方autoconfigure包的操作），将自己需要自动装配的配置类写入
+3.将自定义starter引入自己的项目中
+
+七、信通网易医疗
+1.如何确保接口的安全稳定，避免恶意请求
+token、接口签名
+2.使用mybatis批量插入巨量数据的优化方案
+推荐使用 ExecutorType.BATCH 的插入方式，如果非要使用 <foreach>的插入的话，需要将每次插入的记录控制在 20~50 左右
+
+
+
 
 
 
