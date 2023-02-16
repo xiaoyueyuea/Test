@@ -254,6 +254,29 @@ token、接口签名
 2.使用mybatis批量插入巨量数据的优化方案
 推荐使用 ExecutorType.BATCH 的插入方式，如果非要使用 <foreach>的插入的话，需要将每次插入的记录控制在 20~50 左右
 
+八、拓达聚思力
+1.Function和Consumer的区别
+都位于java.util.function包下
+其中Function属于转换型，例如：stream流处理中的map操作
+Consumer属于消费型，例如：stream流处理中的foreach操作
+Predicate属于判断型，例如：stream流处理中的filter、anyMatch等操作
+
+2.for和foreach的区别
+for循环是基于下标（偏移量）来定位的循环，适用于循环数组结构的数据
+foreach是基于指针直接移动（地址运算）的循环，适用于循环链表结构的数据
+foreach与for循环的明显差别在于：foreach循环时循环对象（数组、集合）被锁定，不能对循环对象中的内容进行增删改操作，会产生并发修改异常
+
+3.单体架构下不考虑分布式锁，保证同一时刻下只能有一次操作成功，其它操作快速失败
+使用乐观锁，即使用版本号或时间戳来判断是否被更新
+
+4.对于不确定返回条数的结果集，使用List接口的哪个实现类来装
+
+5.给定两个集合，如何判断它们中的元素是否完全一致
+方法一：使用retainAll方法取交集
+方法二：使用HashMap判断，key为元素值，value为个数
+方法三：使用stream流将集合排序后转为String字符串比较
+
+
 
 
 
