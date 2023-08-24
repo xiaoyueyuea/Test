@@ -1,4 +1,4 @@
-package com.lay.test;
+package com.lay.threads.instance;
 
 import java.util.concurrent.CountDownLatch;
 
