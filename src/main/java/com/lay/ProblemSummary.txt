@@ -1,2 +1,17 @@
 1.maven工程下，module之间存在依赖关系，maven install打包存在依赖的Module，报错：Failed to collect dependencies at ...
 解决：在父工程下运行 maven install，而后再打包其它包即可
+
+2.oracle锁表
+
+--查看哪个表正在被执行或者被锁
+select b.owner,b.object_name,a.session_id,a.locked_mode
+from v$locked_object a,dba_objects b
+where b.object_id = a.object_id;
+
+--查看是哪个进程引起的
+select b.username,b.sid,b.serial#,logon_time
+from v$locked_object a,v$session b
+where a.session_id = b.sid order by b.logon_time;
+
+执行命令：alter system kill session '1328,1125';
+其中1328为sid, 1125为serial#.
