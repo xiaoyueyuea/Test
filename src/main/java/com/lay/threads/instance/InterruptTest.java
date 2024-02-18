@@ -25,6 +25,7 @@ public class InterruptTest {
                         Thread.sleep(10000);//阻塞当前线程(wait()、join()、yield()等方法也可阻塞)
                     }catch (InterruptedException e){
                         //
+                        System.out.println("响应中断：" + i);
                     }
                 }
             }
