@@ -1,0 +1,32 @@
+兰州乐智
+1、ES倒排索引
+https://blog.csdn.net/qq_31960623/article/details/118860928
+https://www.elastic.co/guide/cn/elasticsearch/guide/current/inverted-index.html
+
+2、RocketMQ如何避免重复消费
+https://blog.csdn.net/m0_65819602/article/details/133973792
+
+3、数组通过二分查找法获取某个值的索引
+https://blog.csdn.net/weixin_64116522/article/details/127791602
+
+4、spring cloud 常用组件
+
+成电智创
+1、jvm模型
+    方法区：存储已被虚拟机加载的类信息，常量，静态变量等
+    虚拟机栈：执行每个方法时，都会创建一个栈帧存储局部变量表，操作数栈，动态链接，方法出口等信息，执行完后自动弹出
+    本地方法栈：与虚拟机栈相似，但服务于native方法
+    堆：java对象的存储区域
+    程序计数器：指示java虚拟机下一条需要执行的字节码指令
+
+2、springMvc实现拦截器的两种方式
+https://blog.csdn.net/qq_45515182/article/details/124739633
+
+3、过滤器、拦截器、Aop执行顺序
+4、gateway的作用
+路由转发、负载均衡、熔断和降级、限流、安全认证
+
+5、SpringBoot启动过程
+
+6、手写回调函数
+提示：方法入参使用接口
