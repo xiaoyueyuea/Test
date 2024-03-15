@@ -30,3 +30,14 @@ https://blog.csdn.net/qq_45515182/article/details/124739633
 
 6、手写回调函数
 提示：方法入参使用接口
+
+
+封面科技
+1、BeanFactory和FactoryBean的区别
+2、如何锁库存
+3、两张都有索引的表关联查询，会使用哪个
+4、Dubbo生产者和消费者同时设置超时时间，哪个会生效
+5、https证书
+6、调用三方接口编码需要注意什么
+7、RocketMQ的ProducerGroup和ConsumerGroup如何提升性能
+8、聊一下mysql的MVCC
