@@ -72,3 +72,24 @@ MVCC 的核心思想是在读取操作时不锁住整个表或行，而是让不
 如果两个事务同时修改同一行数据，MySQL会为每个事务创建一个快照（Snapshot）以进行编辑，相当于把每个事务看作是对某个时间点上的数据副本进行操作
 
 9、数据库和redis如何保持数据一致性
+
+
+城投优联
+1.服务注册与发现的流程
+https://www.cnblogs.com/kelelipeng/p/16541755.html
+https://zhuanlan.zhihu.com/p/426712372
+
+2.sleep和wait的区别
+所属类不同：sleep属于Thread类，wait属于Object类
+sleep不会释放对象锁，wait会释放对象锁，线程进入等待池，可以通过notify随机唤醒
+sleep可以在任何地方使用，wait只能在同步方法或同步代码块使用
+
+3.谈谈对集合的理解
+
+4.kafka和rocketMQ的区别
+
+5.如何解决依赖版本冲突
+https://www.cnblogs.com/cnblog-long/p/17389009.html
+
+6.如何根据租户切换不同的数据库
+https://blog.csdn.net/zy11517/article/details/136343437
