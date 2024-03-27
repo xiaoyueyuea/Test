@@ -93,3 +93,39 @@ https://www.cnblogs.com/cnblog-long/p/17389009.html
 
 6.如何根据租户切换不同的数据库
 https://blog.csdn.net/zy11517/article/details/136343437
+
+成都大数据
+1.Linux查看内存使用情况
+free -h   (h指的是以人类可读的方式显示内存大小)
+top  实时显示系统的各项指标，包括内存使用情况
+
+2.SpringBoot的SPI机制
+https://mp.weixin.qq.com/s/CsaJWxqRIzNmqL64yiynJA
+
+3.SpringCloudAlibaba常用组件
+
+4.一个排好序的数组，给定一个值，打印出所有和为指定值的数字集合,要求时间复杂度O(n)
+public static void method2(int[] nums, int target) {
+        for (int left = 0, right = nums.length - 1; left < right; ) {
+            //2.1.相等的话,直接输出即可
+            if (nums[left] + nums[right] == target) {
+                System.out.println(nums[left] + "+" + nums[right] + "=" + target);
+                left++;
+                right--;
+            } else if (nums[left] + nums[right] < target) {
+                //2.2.相加小于目标值,则left++
+                left++;
+            } else {
+                //2.3.相加大于目标值,则 right--
+                right--;
+            }
+        }
+    }
+
+
+5.手写队列
+com.lay.arithmetic.CustomerQueue
+
+6.Mybatis中Dao接口的实现原理
+Dao接口的工作原理是JDK动态代理，MyBatis运行时会使用JDK动态代理，为Dao接口生成代理proxy对象，代理proxy对象会拦截接口方法，
+转而执行MappedStatement所代表的sql，然就将执行结果返回。
