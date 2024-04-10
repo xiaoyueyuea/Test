@@ -4,6 +4,10 @@ import com.alibaba.fastjson.JSON;
 import com.lay.util.RSAUtils;
 import com.lay.util.SignUtil;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 /**
  * @Version 1.0
@@ -17,33 +21,86 @@ import com.lay.util.SignUtil;
  */
 public class RSATest {
 
-    private final static String PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDUeuHJj74KZQvMckTuWdzz3rXHZdN+1JuFdupSecec19jmaNXu9WI/8PRrFOgWKJsRzL+xw4dUHNDj7ehRkP/uqjrwe33hdiAeuwFpUFnEvGglFF3IY9Jnm1kY+Ff6aFrhCouXaKwqhwRmZ+4dQ6X98/8QUaj2Xl63wRynZfxQDwIDAQAB";
+//    private final static String PUBLIC_KEY = "MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDUeuHJj74KZQvMckTuWdzz3rXHZdN+1JuFdupSecec19jmaNXu9WI/8PRrFOgWKJsRzL+xw4dUHNDj7ehRkP/uqjrwe33hdiAeuwFpUFnEvGglFF3IY9Jnm1kY+Ff6aFrhCouXaKwqhwRmZ+4dQ6X98/8QUaj2Xl63wRynZfxQDwIDAQAB";
+//
+//    private final static String PRIVATE_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANR64cmPvgplC8xyRO5Z3PPetcdl037Um4V26lJ5x5zX2OZo1e71Yj/w9GsU6BYomxHMv7HDh1Qc0OPt6FGQ/+6qOvB7feF2IB67AWlQWcS8aCUUXchj0mebWRj4V/poWuEKi5dorCqHBGZn7h1Dpf3z/xBRqPZeXrfBHKdl/FAPAgMBAAECgYEAlTgrIwugsdoevBiv0hgn9Ng+Huei7RpQkh1eGEfP6JUpjT6op2WK9063yA/poc4ogQqiwSuI+Yg3JysoEUhcgy9QXMNpiprAdSI5RvnYoSGwBsHA7LwwLj0wlrsgpKffJcrDehP2Bol/+M7ueD7n3TOFm56LFSIU3c7yhMinIKECQQDqwFC7CP67aRqvsXSWSM68LSFlEVYc07NEttgehR/fEs95EKwfEHy4gmFUi6wgp0Uom+3luI1CXQgRk0W5t9Q/AkEA57Z+vGC3kKoUKkqdekDeRVQrczqLZrBUrBNcacKRmhYELM2NS43nd46Mu4zlreS9gOY+56CVcdp+47xr9kdQMQJAEq/mfU0VAhQ21J+auU/obSBmlSYRJdBQZ/rqL1vHkrlrnKaQHRTx6LowR0urExpdrgLjqDLNw+el+cgwd71DfwJAUfV2HJGlPFE8cr0TuKNrO2CLQeXKWxcxy+/JN0twDu2MqoBGYxwdbGeKleg/cWPAN/C4/VsKoUvkqA8ErQcKcQJBAN0hfbpyqEzcYfsYj97T4tQRMDHbg+BJtG5BgvXDhNvtqr9k84HJNLfO3mvy13F9svG77WbQh3w8XZWmI2mSI8U=";
+//
+//    public static void main(String[] args) throws Exception {
+//
+//        //明文
+//        String plainText = "{\"tradeNumber\":\"\",\"amount\":2665.45,\"period\":12,\"time\":1589733905763}";
+//
+//        //RSA加密
+//        String cipherText = RSAUtils.encryptRSA(plainText,PRIVATE_KEY);
+//        System.out.println("密文：" + cipherText);
+//
+//        //RSA解密
+//        String info = RSAUtils.decryptRSA(cipherText,PUBLIC_KEY);
+//        System.out.println("解密" + info);
+//        System.out.println(JSON.parseObject(info).getString("amount"));
+//
+//        //RSA加签
+//        String sign = SignUtil.sign(plainText,PRIVATE_KEY);
+//        System.out.println("加签：" + sign);
+//
+//        //verify(验签，签名与消息对应，防止消息被篡改)
+//        if(SignUtil.verify(plainText,sign,PUBLIC_KEY)){
+//            System.out.println("验签成功");
+//        }else {
+//            System.out.println("验签失败");
+//        }
+//    }
 
-    private final static String PRIVATE_KEY = "MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANR64cmPvgplC8xyRO5Z3PPetcdl037Um4V26lJ5x5zX2OZo1e71Yj/w9GsU6BYomxHMv7HDh1Qc0OPt6FGQ/+6qOvB7feF2IB67AWlQWcS8aCUUXchj0mebWRj4V/poWuEKi5dorCqHBGZn7h1Dpf3z/xBRqPZeXrfBHKdl/FAPAgMBAAECgYEAlTgrIwugsdoevBiv0hgn9Ng+Huei7RpQkh1eGEfP6JUpjT6op2WK9063yA/poc4ogQqiwSuI+Yg3JysoEUhcgy9QXMNpiprAdSI5RvnYoSGwBsHA7LwwLj0wlrsgpKffJcrDehP2Bol/+M7ueD7n3TOFm56LFSIU3c7yhMinIKECQQDqwFC7CP67aRqvsXSWSM68LSFlEVYc07NEttgehR/fEs95EKwfEHy4gmFUi6wgp0Uom+3luI1CXQgRk0W5t9Q/AkEA57Z+vGC3kKoUKkqdekDeRVQrczqLZrBUrBNcacKRmhYELM2NS43nd46Mu4zlreS9gOY+56CVcdp+47xr9kdQMQJAEq/mfU0VAhQ21J+auU/obSBmlSYRJdBQZ/rqL1vHkrlrnKaQHRTx6LowR0urExpdrgLjqDLNw+el+cgwd71DfwJAUfV2HJGlPFE8cr0TuKNrO2CLQeXKWxcxy+/JN0twDu2MqoBGYxwdbGeKleg/cWPAN/C4/VsKoUvkqA8ErQcKcQJBAN0hfbpyqEzcYfsYj97T4tQRMDHbg+BJtG5BgvXDhNvtqr9k84HJNLfO3mvy13F9svG77WbQh3w8XZWmI2mSI8U=";
 
-    public static void main(String[] args) throws Exception {
+    public ArrayList<String> timeSort (ArrayList<String> times) {
+        // write code here
+        //15:25:36
+        //362515
+        List<String> list =  times.stream().map(m -> {
+            String[] split = m.split(":");
+            return split[2] + split[1] + split[0];
+        }).sorted(String::compareTo).collect(Collectors.toList());
 
-        //明文
-        String plainText = "{\"tradeNumber\":\"\",\"amount\":2665.45,\"period\":12,\"time\":1589733905763}";
+        return (ArrayList<String>) list.stream().map(m -> {
+            return m.substring(4, 6) + ":" + m.substring(2, 4) + ":" + m.substring(0, 2);
+        }).collect(Collectors.toList());
 
-        //RSA加密
-        String cipherText = RSAUtils.encryptRSA(plainText,PRIVATE_KEY);
-        System.out.println("密文：" + cipherText);
 
-        //RSA解密
-        String info = RSAUtils.decryptRSA(cipherText,PUBLIC_KEY);
-        System.out.println("解密" + info);
-        System.out.println(JSON.parseObject(info).getString("amount"));
-
-        //RSA加签
-        String sign = SignUtil.sign(plainText,PRIVATE_KEY);
-        System.out.println("加签：" + sign);
-
-        //verify(验签，签名与消息对应，防止消息被篡改)
-        if(SignUtil.verify(plainText,sign,PUBLIC_KEY)){
-            System.out.println("验签成功");
-        }else {
-            System.out.println("验签失败");
-        }
     }
+
+    public static String maxDictionaryOrder (String s) {
+        // write code here "aabcbccacbbcbaaba"
+        StringBuilder sb = new StringBuilder();
+        while(s.length() >= 1) {
+            char[] chars = s.toCharArray();
+            char maxChar = getMax(chars);
+            int lastIndexOf = s.lastIndexOf(maxChar);
+
+            for (char c : chars) {
+                if(c == maxChar) {
+                    sb.append(c);
+                }
+            }
+
+            s = s.substring(lastIndexOf + 1);
+        }
+
+        return sb.toString();
+    }
+
+    private static char getMax(char[] chars) {
+        char temp = chars[0];
+        for (char c : chars) {
+            if(c > temp) {
+                temp = c;
+            }
+        }
+        return temp;
+    }
+
+    public static void main(String[] args) {
+        String str = "cmbchina";
+        System.out.println(maxDictionaryOrder(str));
+    }
+
 }
