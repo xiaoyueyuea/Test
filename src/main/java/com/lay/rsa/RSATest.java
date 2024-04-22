@@ -99,8 +99,16 @@ public class RSATest {
     }
 
     public static void main(String[] args) {
-        String str = "cmbchina";
-        System.out.println(maxDictionaryOrder(str));
+//        String str = "cmbchina";
+//        System.out.println(maxDictionaryOrder(str));
+
+//        String s1 = "lay";
+//        String s2 = s1.intern();
+//        System.out.println(s1 == s2);
+//        System.out.println(s1.equals(s2));
+
+        int[] arr = new int[25];
+        System.out.println(arr[24]);
     }
 
 }

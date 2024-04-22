@@ -206,3 +206,9 @@ TreeMap 底层遍历算法是中序遍历，即Key是从小到大的
 串行化：读操作加锁，串行
 
 6.开闭原则
+
+7.mybatis如何实现批量插入
+
+美康医药
+如何防止反编译导致源码泄露
+https://www.cnblogs.com/tocy/articles/java-anti-deassemble.html

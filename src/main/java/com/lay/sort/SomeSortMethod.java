@@ -1,6 +1,11 @@
 package com.lay.sort;
 
+import java.io.Serializable;
 import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import java.util.StringJoiner;
+import java.util.stream.Collectors;
 
 /**
  * @Version 1.0
@@ -12,7 +17,7 @@ import java.util.Arrays;
  * <p>
  * 2021/7/15 lei.yue 1.0 create file
  */
-public class SomeSortMethod {
+public class SomeSortMethod implements Serializable {
 
     /**
      * 冒泡
@@ -36,7 +41,4 @@ public class SomeSortMethod {
         }
     }
 
-    public static void main(String[] args) {
-//        bubbleSort();
-    }
 }
