@@ -212,3 +212,23 @@ TreeMap 底层遍历算法是中序遍历，即Key是从小到大的
 美康医药
 如何防止反编译导致源码泄露
 https://www.cnblogs.com/tocy/articles/java-anti-deassemble.html
+
+必维检测
+1.TCP半连接全连接
+https://zhuanlan.zhihu.com/p/390271050
+
+2.Spring是如何载入配置中心配置的
+https://zhuanlan.zhihu.com/p/661771156
+
+3.说说mybatis的拦截器
+https://blog.csdn.net/qq_45297578/article/details/132029683
+
+4.Spring的三级缓存在哪种注入方式下不能解决循环依赖
+https://blog.csdn.net/wang489687009/article/details/120546430
+prototype 类型的循环依赖
+constructor 注入的循环依赖
+@Async 类型的 AOP Bean 的循环依赖
+这些解决不了的场景都可以通过 @Lazy 来解决掉
+
+5.@Bean和@Component的区别
+https://www.cnblogs.com/Daniel-Leung/p/beanorcomponent202108251648.html
