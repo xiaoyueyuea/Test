@@ -1,0 +1,92 @@
+美团
+1.两个线程交替打印
+    private static List<Integer> intList = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6));
+    private static List<String> strList = new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F"));
+
+    private static ReentrantLock lock = new ReentrantLock();
+
+    private static Condition condition = lock.newCondition();
+
+    // true打印数字 false字符串
+    private volatile static boolean printInt = true;
+
+    public static void main(String[] args){
+
+        new Thread(() -> {
+            intList.forEach(f -> {
+                print(String.valueOf(f), true);
+            });
+        }).start();
+
+        new Thread(() -> {
+            strList.forEach(f -> {
+                print(f, false);
+            });
+        }).start();
+
+    }
+
+    public static void print(String str, boolean flag){
+        lock.lock();
+        try{
+            // 检查当前是否轮到自己执行
+            while (printInt != flag) {
+                condition.await(); // 不满足条件则等待
+            }
+            System.out.println(str); // 打印内容
+            printInt = !printInt;     // 翻转标志位
+            condition.signal();
+        }catch (InterruptedException ex){
+            // ignore
+        }finally {
+            lock.unlock();;
+        }
+    }
+
+
+2.使用配置中心的优势、配置中心修改配置后如何通知服务
+https://yuanbao.tencent.com/chat/naQivTmsDa/77c3f58d-07d3-42c4-b3ff-7e1c379e6894
+
+3.springmvc执行流程，具体说明如何通过url找到具体接口
+https://yuanbao.tencent.com/chat/naQivTmsDa/0ad3c467-6fe7-4250-9f77-325e1bb815be
+
+4.代码中如何做主从切换
+使用多数据源，通过mybatis拦截sql，读操作切换从库
+
+5.多个线程并行执行，某个线程发生OOM，是否会影响其它线程
+https://yuanbao.tencent.com/chat/naQivTmsDa/35d7d791-0ca1-43ef-aa19-21220b8e293c
+
+6.jvm常用调参命令以及方法
+https://yuanbao.tencent.com/chat/naQivTmsDa/fe76c090-29e2-486e-a84a-900e004c0182
+
+
+百利天恒
+1.synchronized和aqs实现原理区别
+synchronized依赖 JVM 底层的 monitor 对象（由 C++ 实现），通过对象头的Mark Word 记录锁状态
+
+2.rocketMq如何实现顺序消息、保证消息不丢失
+
+3.openFegin的实现原理，如何捕获异常
+https://yuanbao.tencent.com/chat/naQivTmsDa/8c3e0b7b-8d24-42fc-9583-3eef07565586
+
+4.dubbo和spring cloud区别
+https://yuanbao.tencent.com/chat/naQivTmsDa/fde64330-793a-49d7-9aa9-5aaf23a66aeb
+
+5.策略模式
+https://yuanbao.tencent.com/chat/naQivTmsDa/fa37bf11-2c12-40e5-9a81-00dc2721bbe5
+
+6.IO密集型和CPU密集型区别
+https://yuanbao.tencent.com/chat/naQivTmsDa/c14aa84b-212e-4726-ab74-74ea5a61855a
+
+7.如何做事务拆分
+
+8.mysql是如何实现事务的
+undoLog
+
+9.synchronized的锁升级机制
+https://yuanbao.tencent.com/chat/naQivTmsDa/115fc3dd-f17b-478c-84d9-2823a4650f49
+
+10.rocketMq是推模式还是拉模式
+https://yuanbao.tencent.com/chat/naQivTmsDa/2bcac143-1ef1-4735-bdcf-bcf5a5ce2d23
+
+
